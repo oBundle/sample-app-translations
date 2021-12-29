@@ -73,7 +73,12 @@ export default async function products(
           redirect: 'follow'
         };
         
-        const response = await fetch(`https://api.bigcommerce.com/stores/${storeHash}/graphql`, requestOptions);
+        const response = await fetch(`https://api.bigcommerce.com/stores/${storeHash}/graphql`, {
+          method: 'POST',
+          headers: myHeaders,
+          body: graphql,
+          redirect: 'follow'
+        });
         if (!response.ok) throw new Error('[pid.tsx ERROR]: Cannot fetch from requested API product resource');
 
         const json = await response.json();
