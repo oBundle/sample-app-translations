@@ -240,11 +240,6 @@ function ProductForm({ formData: productData, onCancel, onSubmit, isSaving, onDe
     }
   };
 
-  // For Testing
-  const onDeleteMetafields = () => {
-    onDelete(productData.metafields);
-  };
-
   return (
     <>
       {/* Header */}
@@ -440,14 +435,6 @@ function ProductForm({ formData: productData, onCancel, onSubmit, isSaving, onDe
           <StyledFlex backgroundColor="white" border="box" padding="medium">
             <Flex justifyContent="flex-end">
               <Flex alignItems="center" style={{marginRight: 'auto'}}>
-                <FlexItem marginRight="xLarge">
-                  <Button
-                    type="button"
-                    onClick={onDeleteMetafields}
-                  >
-                    Delete Product Metafields
-                  </Button>
-                </FlexItem>
                 <Flex alignItems="center">
                   <H4 marginBottom="none" marginRight="medium">Use Concise Metafield Storage</H4>
                   <Switch
