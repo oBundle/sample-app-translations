@@ -3,6 +3,11 @@ import "firebase/firestore";
 import { SessionProps, StoreData, UserData } from "../../types";
 import { useConciseMetafieldStorage, availableLocales } from "@lib/constants";
 
+interface Locale {
+  code: string,
+  label: string,
+}
+
 // Firebase config and initialization
 // Prod applications might use config file
 const { FIRE_API_KEY, FIRE_DOMAIN, FIRE_PROJECT_ID } = process.env;
@@ -119,7 +124,7 @@ export async function getDbLocales(storeHash: string) {
   return storeDoc?.exists ? storeDoc.data()?.locales : null;
 }
 
-export async function addDbLocale(storeHash: string, locale: object) {
+export async function addDbLocale(storeHash: string, locale: Locale) {
   if (!storeHash) return null;
   const storeDoc = await db.collection("store").doc(storeHash).get();
   const locales = storeDoc?.exists ? storeDoc.data()?.locales : null;
