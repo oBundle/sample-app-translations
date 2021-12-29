@@ -21,4 +21,5 @@ export interface Db {
     addDbLocale(storeId: string, locale: object): Promise<void>;
     deleteStore(session: SessionProps): Promise<void>;
     deleteUser(session: SessionProps): Promise<void>;
+    updateConciseStorage(storeHash: string, useConciseStorage: boolean)
 }
