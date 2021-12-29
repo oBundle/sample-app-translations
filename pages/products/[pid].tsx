@@ -113,7 +113,6 @@ const ProductInfo = () => {
         formData={formData}
         onCancel={handleCancel}
         onSubmit={handleSubmit}
-        onDelete={handleDelete}
         isSaving={isProductSaving}
       />
     </Loading>

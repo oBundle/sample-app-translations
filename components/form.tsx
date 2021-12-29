@@ -21,12 +21,11 @@ interface FormProps {
   onCancel(): void;
   onSubmit(form: FormData, selectedLocale: string, useConciseStorage: boolean): void;
   isSaving: boolean;
-  onDelete(): void;
 } 
 
 const FormErrors = {};
 
-function ProductForm({ formData: productData, onCancel, onSubmit, isSaving, onDelete }: FormProps) {
+function ProductForm({ formData: productData, onCancel, onSubmit, isSaving }: FormProps) {
   const router = useRouter();
   const { context } = useSession();
   const { locale: storeLocale } = useStoreLocale();
