@@ -64,7 +64,9 @@ export function useProductInfo(pid: number, list: ListItem[]) {
 }
 
 export function useDbStoreData() {
-  const { data, error, mutate: mutateStore } = useSWR(`/api/db/store`, fetcher);
+  const { context } = useSession();
+  const params = new URLSearchParams({ context }).toString();
+  const { data, error, mutate: mutateStore } = useSWR(context ? [`/api/db/store`, params] : null, fetcher);
 
   return {
     store: data,

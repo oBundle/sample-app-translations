@@ -104,12 +104,11 @@ export async function deleteUser({ user }: SessionProps) {
   await storeUsersRef.delete();
 }
 
-export async function getStore() {
-  const doc = await db.collection("store").limit(1).get();
-  const [storeDoc] = doc?.docs ?? [];
-  const storeData: StoreData = { ...storeDoc?.data(), storeHash: storeDoc?.id };
+export async function getStore(storeHash: string) {
+  if (!storeHash) return null;
+  const storeDoc = await db.collection("store").doc(storeHash).get();
 
-  return storeDoc?.exists ? storeData : null;
+  return storeDoc?.exists ? storeDoc.data() : null;
 }
 
 export async function getDbLocales(storeHash: string) {
