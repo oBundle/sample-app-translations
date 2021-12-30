@@ -1,13 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import db from "../../../lib/db";
+import { getSession } from "@lib/auth";
+import db from "@lib/db";
 
 export default async function store(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
+  const { storeHash } = await getSession(req);
   
   switch(method) {
     case "GET":
       try {
-        const storeData = await db.getStore();
+        const storeData = await db.getStore(storeHash);
 
         res.status(200).json(storeData);
       } catch (error) {

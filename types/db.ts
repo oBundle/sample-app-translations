@@ -15,7 +15,7 @@ export interface Db {
     setUser(session: SessionProps): Promise<void>;
     setStore(session: SessionProps): Promise<void>;
     setStoreUser(session: SessionProps): Promise<void>;
-    getStore(): StoreData | null;
+    getStore(storeId: string): StoreData | null;
     getStoreToken(storeId: string): string | null;
     getDbLocales(storeId: string): string | null;
     addDbLocale(storeId: string, locale: object): Promise<void>;
